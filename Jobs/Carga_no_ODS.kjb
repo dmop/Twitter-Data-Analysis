@@ -314,11 +314,11 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
+      <xloc>704</xloc>
       <yloc>160</yloc>
     </entry>
     <entry>
-      <name>Entrada dos dados - mentioned</name>
+      <name>Entrada dos dados - mentioned&#x2f;rt</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -388,7 +388,7 @@
       <yloc>160</yloc>
     </entry>
     <entry>
-      <name>Carga no ODS</name>
+      <name>Carga no ODS dm_tweets</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -426,7 +426,7 @@
   <hops>
     <hop>
       <from>START</from>
-      <to>Entrada dos dados - mentioned</to>
+      <to>Entrada dos dados - mentioned&#x2f;rt</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -434,7 +434,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Entrada dos dados - mentioned</from>
+      <from>Entrada dos dados - mentioned&#x2f;rt</from>
       <to>Entrada dos dados - from oncase</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -444,7 +444,7 @@
     </hop>
     <hop>
       <from>Entrada dos dados - from oncase</from>
-      <to>Carga no ODS</to>
+      <to>Carga no ODS dm_tweets</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -452,7 +452,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Carga no ODS</from>
+      <from>Carga no ODS dm_tweets</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -463,10 +463,10 @@
   </hops>
   <notepads>
     <notepad>
-      <note>Este Job recebe os dados, e armazena - os no ODS implementado em &#xd;&#xa;Postgres</note>
+      <note>Este Job recebe os dados, e armazena - os no ODS tweets&#xd;&#xa; implementado em Postgres</note>
       <xloc>192</xloc>
       <yloc>80</yloc>
-      <width>377</width>
+      <width>310</width>
       <heigth>42</heigth>
       <fontname>Segoe UI</fontname>
       <fontsize>9</fontsize>

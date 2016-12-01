@@ -437,8 +437,8 @@
   <notepads>
     <notepad>
       <note>Esta transforma&#xe7;&#xe3;o le os dados do json , e armazena-os no ODS do dm_tweets, utilizando&#xd;&#xa;o banco PostgreSQL</note>
-      <xloc>48</xloc>
-      <yloc>128</yloc>
+      <xloc>64</xloc>
+      <yloc>272</yloc>
       <width>502</width>
       <heigth>38</heigth>
       <fontname>Palatino Linotype Negrito It&#xe1;lico</fontname>
@@ -508,17 +508,17 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>projeta 2</from>
-      <to>Sorted Merge</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>projeta</from>
-      <to>Sorted Merge</to>
+      <to>Dummy &#x28;do nothing&#x29;</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sorted Merge</from>
+      <from>projeta 2</from>
+      <to>Dummy &#x28;do nothing&#x29;</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy &#x28;do nothing&#x29;</from>
       <to>Envia para o ODS_tweets</to>
       <enabled>Y</enabled>
     </hop>
@@ -659,7 +659,6 @@
       <schema_name/>
     </partitioning>
     <fields>      <field>        <name>status</name>
-        <rename/>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>    <cluster_schema/>
     <remotesteps>
@@ -671,113 +670,6 @@
     <GUI>
       <xloc>240</xloc>
       <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Sorted Merge</name>
-    <type>SortedMerge</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>id_user</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>id_tweet</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>retweeted_status</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>data_tweet</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>text</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>likes_count</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>hashtags</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>hashtags_count</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>links</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>links_count</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>user_name</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>screen_name</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>user_location</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>media</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>media_count</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>retweet_count</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>interaction_mentioned</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>followers_count</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>following_count</name>
-        <ascending>Y</ascending>
-        </field>
-      <field>
-        <name>interaction_type</name>
-        <ascending>Y</ascending>
-        </field>
-      </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -797,7 +689,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var status &#x3d; JSON.parse&#x28;status&#x29;&#x3b;&#xa;&#xa;var id_user    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var id_tweet   &#x3d; status&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var retweeted_status   &#x3d; status&#x5b;&#x22;retweeted_status&#x22;&#x5d;&#x3b;&#xd;&#xa;var data_tweet     	&#x3d; status&#x5b;&#x22;created_at&#x22;&#x5d;&#x3b;&#xd;&#xa;var text     	&#x3d;  status&#x5b;&#x22;text&#x22;&#x5d;&#x3b;&#xd;&#xa;var likes_count &#x3d; status&#x5b;&#x22;favorite_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var hashtags   	&#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d;&#x3b;&#xd;&#xa;var hashtags_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xd;&#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var links  		&#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d;&#x3b;&#xd;&#xa;var links_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xd;&#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var user_name        &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;name&#x22;&#x5d;&#x3b;&#xa;var screen_name &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;screen_name&#x22;&#x5d;&#x3b;&#xa;var user_location    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;location&#x22;&#x5d;&#x3b;&#xd;&#xa;var media       &#x3d; JSON.stringify&#x28;status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d;&#x29;&#x3b;&#xa;var media_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var retweet_count &#x3d; status&#x5b;&#x22;retweet_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var interaction_mentioned &#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;user_mentions&#x22;&#x5d;&#x3b;&#xd;&#xa;var followers_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;followers_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var following_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;friends_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var interaction_type &#x3d; &#x22;Mentioned - Oncase&#x22;&#x3b;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;if &#x28;retweeted_status &#x21;&#x3d; null&#x29; &#x7b;&#xd;&#xa;    interaction_type &#x3d; &#x22;Retweeted - Oncase&#x22;&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;</jsScript_script>
+        <jsScript_script>&#xd;&#xa;&#x2f;&#x2f;function dt_convert&#x28;data&#x29;&#x7b;	&#xd;&#xa;&#xd;&#xa;&#x2f;&#x2f;&#x2f;	data &#x3d; data.replace&#x28;&#x22;&#x2b;0000 &#x22;, &#x22;&#x22;&#x29; &#x2b; &#x22; UTC&#x22;&#x3b;&#xd;&#xa;	&#xd;&#xa;&#x2f;&#x2f;	return data&#x3b;&#xd;&#xa;&#xd;&#xa;&#x2f;&#x2f;&#x7d;&#x3b;&#xd;&#xa;&#xd;&#xa;function mes_convert&#x28;month_mmm&#x29;&#x7b;&#xd;&#xa;    month&#x3d;&#x5b;&#x27;Jan&#x27;,&#x27;Feb&#x27;,&#x27;Mar&#x27;,&#x27;Apr&#x27;,&#x27;May&#x27;,&#x27;Jun&#x27;,&#x27;Jul&#x27;,&#x27;Aug&#x27;,&#x27;Sep&#x27;,&#x27;Oct&#x27;,&#x27;Nov&#x27;,&#x27;Dec&#x27;&#x5d;&#x3b;&#xd;&#xa; &#xd;&#xa; var i&#x3d;0&#x3b;&#xd;&#xa; &#xd;&#xa;   while &#x28;month&#x5b;i&#x5d;&#x21;&#x3d;month_mmm&#x29;&#x7b;&#xd;&#xa;        i&#x2b;&#x3d;1&#x3b;&#xd;&#xa;   &#x7d;&#xd;&#xa;   i&#x2b;&#x3d;1&#x3b;&#xd;&#xa;   &#xd;&#xa;   if &#x28;i&#x3c;10&#x29;&#x7b;&#xd;&#xa;        return &#x27;0&#x27;&#x2b;i&#x3b;&#xd;&#xa;   &#x7d;else&#x7b;&#xd;&#xa;        return i.toString&#x28;&#x29;&#x3b;&#xd;&#xa;   &#x7d;&#xd;&#xa;   &#xd;&#xa;&#x7d;&#x3b;&#xd;&#xa;&#xd;&#xa;function date_convert &#x28;a&#x29;&#x7b;&#xd;&#xa;    var b &#x3d; a.split&#x28;&#x22; &#x22;&#x29;&#x3b;&#xd;&#xa;    var c &#x3d; &#x27;&#x27;&#x3b;&#xd;&#xa;&#xd;&#xa;    c&#x3d;b&#x5b;5&#x5d;&#x3b;&#xd;&#xa;    c&#x2b;&#x3d;&#x27;&#x2f;&#x27;&#x2b;mes_convert&#x28;b&#x5b;1&#x5d;&#x29;&#x3b;&#xd;&#xa;    c&#x2b;&#x3d;&#x27;&#x2f;&#x27;&#x2b;b&#x5b;2&#x5d;&#x3b;&#xd;&#xa;    c&#x2b;&#x3d;&#x27; &#x27;&#x2b;b&#x5b;3&#x5d;&#x3b;&#xd;&#xa;    return c&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;var status &#x3d; JSON.parse&#x28;status&#x29;&#x3b;&#xd;&#xa;&#xd;&#xa;&#xa;&#xa;var id_user    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var id_tweet   &#x3d; status&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var retweeted_status   &#x3d; status&#x5b;&#x22;retweeted_status&#x22;&#x5d;&#x3b;&#xd;&#xa;var data_tweet     	&#x3d; date_convert&#x28;status&#x5b;&#x22;created_at&#x22;&#x5d;&#x29;&#x3b;&#xd;&#xa;var text     	&#x3d;  status&#x5b;&#x22;text&#x22;&#x5d;&#x3b;&#xd;&#xa;var likes_count &#x3d; status&#x5b;&#x22;favorite_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var hashtags   	&#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d;&#x3b;&#xd;&#xa;var hashtags_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xd;&#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var links  		&#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d;&#x3b;&#xd;&#xa;var links_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xd;&#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var user_name        &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;name&#x22;&#x5d;&#x3b;&#xa;var screen_name &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;screen_name&#x22;&#x5d;&#x3b;&#xa;var user_location    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;location&#x22;&#x5d;&#x3b;&#xd;&#xa;var media       &#x3d; JSON.stringify&#x28;status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d;&#x29;&#x3b;&#xa;var media_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var retweet_count &#x3d; status&#x5b;&#x22;retweet_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var interaction_mentioned &#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;user_mentions&#x22;&#x5d;&#x3b;&#xd;&#xa;var followers_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;followers_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var following_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;friends_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var interaction_type &#x3d; &#x22;Mentioned - Oncase&#x22;&#x3b;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;if &#x28;retweeted_status &#x21;&#x3d; null&#x29; &#x7b;&#xd;&#xa;    interaction_type &#x3d; &#x22;Retweeted - Oncase&#x22;&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;</jsScript_script>
       </jsScript>      <jsScript>        <jsScript_type>-1</jsScript_type>
         <jsScript_name>Item_0</jsScript_name>
         <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;</jsScript_script>
@@ -950,7 +842,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var status &#x3d; JSON.parse&#x28;status&#x29;&#x3b;&#xa;&#xa;var id_user    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var id_tweet   &#x3d; status&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var retweeted_status   &#x3d; status&#x5b;&#x22;retweeted_status&#x22;&#x5d;&#x3b;&#xd;&#xa;var data_tweet     	&#x3d; status&#x5b;&#x22;created_at&#x22;&#x5d;&#x3b;&#xd;&#xa;var text     	&#x3d;  status&#x5b;&#x22;text&#x22;&#x5d;&#x3b;&#xd;&#xa;var likes_count &#x3d; status&#x5b;&#x22;favorite_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var hashtags   	&#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d;&#x3b;&#xd;&#xa;var hashtags_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xd;&#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var links  		&#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d;&#x3b;&#xd;&#xa;var links_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xd;&#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var user_name        &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;name&#x22;&#x5d;&#x3b;&#xa;var screen_name &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;screen_name&#x22;&#x5d;&#x3b;&#xa;var user_location    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;location&#x22;&#x5d;&#x3b;&#xd;&#xa;var media       &#x3d; JSON.stringify&#x28;status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d;&#x29;&#x3b;&#xa;var media_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var retweet_count &#x3d; status&#x5b;&#x22;retweet_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var interaction_mentioned &#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;user_mentions&#x22;&#x5d;&#x3b;&#xd;&#xa;var followers_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;followers_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var following_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;friends_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var interaction_type  &#x3d;  &#x22;From - &#x22;&#x2b;status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;name&#x22;&#x5d;&#x3b;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;</jsScript_script>
+        <jsScript_script>function mes_convert&#x28;month_mmm&#x29;&#x7b;&#xd;&#xa;    month&#x3d;&#x5b;&#x27;Jan&#x27;,&#x27;Feb&#x27;,&#x27;Mar&#x27;,&#x27;Apr&#x27;,&#x27;May&#x27;,&#x27;Jun&#x27;,&#x27;Jul&#x27;,&#x27;Aug&#x27;,&#x27;Sep&#x27;,&#x27;Oct&#x27;,&#x27;Nov&#x27;,&#x27;Dec&#x27;&#x5d;&#x3b;&#xd;&#xa; &#xd;&#xa; var i&#x3d;0&#x3b;&#xd;&#xa; &#xd;&#xa;   while &#x28;month&#x5b;i&#x5d;&#x21;&#x3d;month_mmm&#x29;&#x7b;&#xd;&#xa;        i&#x2b;&#x3d;1&#x3b;&#xd;&#xa;   &#x7d;&#xd;&#xa;   i&#x2b;&#x3d;1&#x3b;&#xd;&#xa;   &#xd;&#xa;   if &#x28;i&#x3c;10&#x29;&#x7b;&#xd;&#xa;        return &#x27;0&#x27;&#x2b;i&#x3b;&#xd;&#xa;   &#x7d;else&#x7b;&#xd;&#xa;        return i.toString&#x28;&#x29;&#x3b;&#xd;&#xa;   &#x7d;&#xd;&#xa;   &#xd;&#xa;&#x7d;&#x3b;&#xd;&#xa;&#xd;&#xa;function date_convert &#x28;a&#x29;&#x7b;&#xd;&#xa;    var b &#x3d; a.split&#x28;&#x22; &#x22;&#x29;&#x3b;&#xd;&#xa;    var c &#x3d; &#x27;&#x27;&#x3b;&#xd;&#xa;&#xd;&#xa;    c&#x3d;b&#x5b;5&#x5d;&#x3b;&#xd;&#xa;    c&#x2b;&#x3d;&#x27;&#x2f;&#x27;&#x2b;mes_convert&#x28;b&#x5b;1&#x5d;&#x29;&#x3b;&#xd;&#xa;    c&#x2b;&#x3d;&#x27;&#x2f;&#x27;&#x2b;b&#x5b;2&#x5d;&#x3b;&#xd;&#xa;    c&#x2b;&#x3d;&#x27; &#x27;&#x2b;b&#x5b;3&#x5d;&#x3b;&#xd;&#xa;    return c&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;var status &#x3d; JSON.parse&#x28;status&#x29;&#x3b;&#xa;&#xa;var id_user    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var id_tweet   &#x3d; status&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var retweeted_status   &#x3d; status&#x5b;&#x22;retweeted_status&#x22;&#x5d;&#x3b;&#xd;&#xa;var data_tweet     	&#x3d; date_convert&#x28;status&#x5b;&#x22;created_at&#x22;&#x5d;&#x29;&#x3b;&#xd;&#xa;var text     	&#x3d;  status&#x5b;&#x22;text&#x22;&#x5d;&#x3b;&#xd;&#xa;var likes_count &#x3d; status&#x5b;&#x22;favorite_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var hashtags   	&#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d;&#x3b;&#xd;&#xa;var hashtags_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xd;&#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;hashtags&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var links  		&#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d;&#x3b;&#xd;&#xa;var links_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xd;&#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;urls&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var user_name        &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;name&#x22;&#x5d;&#x3b;&#xa;var screen_name &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;screen_name&#x22;&#x5d;&#x3b;&#xa;var user_location    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;location&#x22;&#x5d;&#x3b;&#xd;&#xa;var media       &#x3d; JSON.stringify&#x28;status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d;&#x29;&#x3b;&#xa;var media_count &#x3d; typeof status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d; &#x3d;&#x3d;&#x3d; &#x22;undefined&#x22; &#x3f; 0 &#x3a; &#xa;					status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;media&#x22;&#x5d;.length&#x3b;&#xd;&#xa;var retweet_count &#x3d; status&#x5b;&#x22;retweet_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var interaction_mentioned &#x3d; status&#x5b;&#x22;entities&#x22;&#x5d;&#x5b;&#x22;user_mentions&#x22;&#x5d;&#x3b;&#xd;&#xa;var followers_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;followers_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var following_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;friends_count&#x22;&#x5d;&#x3b;&#xd;&#xa;var interaction_type  &#x3d;  &#x22;From - &#x22;&#x2b;status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;name&#x22;&#x5d;&#x3b;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;&#xd;&#xa;</jsScript_script>
       </jsScript>      <jsScript>        <jsScript_type>-1</jsScript_type>
         <jsScript_name>Item_0</jsScript_name>
         <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;</jsScript_script>
@@ -1143,7 +1035,22 @@
         <rename/>
       </field>        <select_unspecified>N</select_unspecified>
       <remove>        <name>status</name>
-      </remove>    </fields>    <cluster_schema/>
+      </remove>      <meta>        <name>data_tweet</name>
+        <rename>data_tweet</rename>
+        <type>Timestamp</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1151,7 +1058,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>512</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1212,7 +1119,22 @@
         <rename/>
       </field>        <select_unspecified>N</select_unspecified>
       <remove>        <name>status</name>
-      </remove>    </fields>    <cluster_schema/>
+      </remove>      <meta>        <name>data_tweet</name>
+        <rename>data_tweet</rename>
+        <type>Timestamp</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1220,7 +1142,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>528</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1360,6 +1282,31 @@
     <GUI>
       <xloc>48</xloc>
       <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Dummy &#x28;do nothing&#x29;</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
