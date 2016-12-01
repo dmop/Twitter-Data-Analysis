@@ -1,0 +1,13 @@
+Identificador do tweet ok
+Data do tweet;         ok
+Usuario origem (ex.: @oncase)   
+Usuario destino (ex.: @iandecoutinho)
+Tipo de interacao (FROM-ONCASE, MENTIONED-ONCASE, RT-ONCASE);
+Contém mídia (foto/video)?  
+Contém link?     ok
+Contém hashtag?    ok
+Texto do tweet;   ok
+Quantidade de tweets (sempre 1);
+Quantidade de likes;  ok
+
+${Internal.Transformation.Filename.Directory}\Saidas\data_output

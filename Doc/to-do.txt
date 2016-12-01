@@ -1,0 +1,9 @@
+﻿--Documentação referente a construção do DW 
+
+-- To-do
+	
+   	- Verificar o Usuario origem (ex.: @oncase) ;  
+
+	- Verificar o Usuario destino (ex.: @iandecoutinho) .
+
+pg_dump --host localhost --port 5432 --username "postgres" --format plain --schema-only --encoding UTF8 --file C:\Users\Danilo\Desktop\ODS.sql ODS
