@@ -436,6 +436,30 @@
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>twitter_intelligence_ods</name>
+    <server>localhost</server>
+    <type>POSTGRESQL</type>
+    <access>JNDI</access>
+    <database>twitter_intelligence</database>
+    <port>5432</port>
+    <username/>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>tweets</from>
@@ -511,6 +535,11 @@
       <from>Merge Join</from>
       <to>projeta 2</to>
       <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>projeta 2</from>
+      <to>scrapping table</to>
+      <enabled>N</enabled>
     </hop>
   </order>
   <step>
@@ -744,15 +773,15 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var users &#x3d; html.match&#x28;&#x2f;href&#x5c;&#x3d;&#x22;&#x5c;&#x2f;&#x5c;w&#x2a;&#x22;&#x2f;g&#x29;&#x3b;&#xa;var user_id  &#x3d; html.match&#x28;&#x2f;data-user-id&#x5c;&#x3d;&#x22;&#x5c;w&#x2a;&#x22;&#x2f;g&#x29;&#x3b;&#xd;&#xa;&#xa;for&#x28;x &#x3d; 0 &#x3b; x&#x3c; users.length &#x3b; x&#x2b;&#x2b;&#x29;&#x7b;&#xa;	users&#x5b;x&#x5d; &#x3d; users&#x5b;x&#x5d;.replace&#x28;&#x22;href&#x3d;&#x5c;&#x22;&#x2f;&#x22;, &#x22;&#x22;&#x29;.replace&#x28;&#x27;&#x22;&#x27;, &#x27;&#x27;&#x29;&#x3b;&#xa;&#x7d;&#xa;&#xd;&#xa;for&#x28;i &#x3d; 0 &#x3b; i&#x3c; user_id.length &#x3b; i&#x2b;&#x2b;&#x29;&#x7b;&#xd;&#xa;	user_id&#x5b;i&#x5d; &#x3d; user_id&#x5b;i&#x5d;.replace&#x28;&#x22;data-user-id&#x3d;&#x22;, &#x22; &#x22;&#x29;.replace&#x28;&#x27;&#x22;&#x27;, &#x27;&#x27;&#x29;&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;&#xa;users &#x3d; users.join&#x28;&#x22;,&#x22;&#x29;&#x3b;&#xd;&#xa;id_twitter &#x3d; user_id.join&#x28;&#x22;,&#x22;&#x29;&#x3b;</jsScript_script>
+        <jsScript_script>var users &#x3d; html.match&#x28;&#x2f;href&#x5c;&#x3d;&#x22;&#x5c;&#x2f;&#x5c;w&#x2a;&#x22;&#x2f;g&#x29;&#x3b;&#xa;var user_id  &#x3d; html.match&#x28;&#x2f;data-user-id&#x5c;&#x3d;&#x22;&#x5c;w&#x2a;&#x22;&#x2f;g&#x29;&#x3b;&#xd;&#xa;&#xa;for&#x28;x &#x3d; 0 &#x3b; x&#x3c; users.length &#x3b; x&#x2b;&#x2b;&#x29;&#x7b;&#xa;	users&#x5b;x&#x5d; &#x3d; users&#x5b;x&#x5d;.replace&#x28;&#x22;href&#x3d;&#x5c;&#x22;&#x2f;&#x22;, &#x22;&#x22;&#x29;.replace&#x28;&#x27;&#x22;&#x27;, &#x27;&#x27;&#x29;&#x3b;&#xa;&#x7d;&#xa;&#xd;&#xa;for&#x28;i &#x3d; 0 &#x3b; i&#x3c; user_id.length &#x3b; i&#x2b;&#x2b;&#x29;&#x7b;&#xd;&#xa;	user_id&#x5b;i&#x5d; &#x3d; user_id&#x5b;i&#x5d;.replace&#x28;&#x22;data-user-id&#x3d;&#x22;, &#x22; &#x22;&#x29;.replace&#x28;&#x27;&#x22;&#x27;, &#x27;&#x27;&#x29;&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;&#xa;users &#x3d; users.join&#x28;&#x22;,&#x22;&#x29;&#x3b;&#xd;&#xa;id_user &#x3d; user_id.join&#x28;&#x22;,&#x22;&#x29;&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>users</name>
         <rename>users</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
-      </field>      <field>        <name>id_twitter</name>
-        <rename>id_twitter</rename>
+      </field>      <field>        <name>id_user</name>
+        <rename>id_user</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -784,6 +813,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </partitioning>
     <fields>      <field>        <name>url_tweet</name>
       </field>      <field>        <name>html</name>
+      </field>      <field>        <name>id_twitter</name>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>    <cluster_schema/>
     <remotesteps>
@@ -793,7 +823,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>720</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -810,9 +840,9 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       <method>none</method>
       <schema_name/>
     </partitioning>
-   <splitfield>id_twitter</splitfield>
+   <splitfield>id_user</splitfield>
    <delimiter>,</delimiter>
-   <newfield>id_twitter</newfield>
+   <newfield>id_user_split</newfield>
    <rownum>N</rownum>
    <rownum_field/>
    <resetrownumber>Y</resetrownumber>
@@ -998,7 +1028,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <replace>N</replace>
       </field>      <field>        <name>id_twitter</name>
         <rename>id_twitter</rename>
-        <type>Integer</type>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
@@ -1016,7 +1046,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>192</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1034,6 +1064,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       <schema_name/>
     </partitioning>
     <fields>      <field>        <name>html</name>
+      </field>      <field>        <name>id_twitter</name>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>    <cluster_schema/>
     <remotesteps>
@@ -1053,7 +1084,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <name>projeta 2</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1072,7 +1103,51 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
+      <xloc>656</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>scrapping table</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>twitter_intelligence_ods</connection>
+    <schema/>
+    <table>scrapping</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
