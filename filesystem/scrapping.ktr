@@ -710,10 +710,10 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 <step1>cortar ids</step1>
 <step2>cortar users</step2>
     <keys_1>
-      <key>id_twitter_1</key>
+      <key>users</key>
     </keys_1>
     <keys_2>
-      <key>id_twitter</key>
+      <key>users</key>
     </keys_2>
     <cluster_schema/>
     <remotesteps>

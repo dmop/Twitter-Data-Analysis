@@ -465,7 +465,7 @@
     <database>ODS</database>
     <port>5432</port>
     <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7818bbe0abe7fcc86fe8a</password>
+    <password>Encrypted 2be98afc86aa7f2e4a417ad71cd97fe88</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -510,7 +510,7 @@
       <schema_name/>
     </partitioning>
     <connection>conn_postgres</connection>
-    <schema>treinamento</schema>
+    <schema>public</schema>
     <table>ODS_users_liked</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
@@ -680,7 +680,7 @@
     <ignoreMissingPath>Y</ignoreMissingPath>
     <rownum_field/>
     <file>
-      <name>C&#x3a;&#x5c;Pentaho-ce&#x5c;Twitter Data Analysis&#x5c;output&#x5c;raw.json</name>
+      <name>C&#x3a;&#x5c;Pentaho - Ce&#x5c;Twitter Data Analysis&#x5c;output&#x5c;raw_search_tweets.json</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>

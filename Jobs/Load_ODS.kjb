@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>Carga_no_ODS</name>
+  <name>Load_ODS</name>
   <description/>
   <extended_description/>
   <job_version/>
