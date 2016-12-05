@@ -483,11 +483,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>projeta</from>
-      <to>Modified Java Script Value</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Modified Java Script Value</from>
       <to>cortar users</to>
       <enabled>Y</enabled>
@@ -515,6 +510,21 @@
     <hop>
       <from>projeta 2</from>
       <to>Unique rows &#x28;HashSet&#x29;</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>projeta</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows &#x28;HashSet&#x29;</from>
+      <to>JSON Output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Modified Java Script Value</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -657,6 +667,41 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </step>
 
   <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+<send_true_to>Modified Java Script Value</send_true_to>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>html</leftvalue>
+ <function>&#x3c;&#x3e;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>&#x3c;lista&#x3e;null&#x3c;&#x2f;lista&#x3e;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1088</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
     <name>HTTP Client</name>
     <type>HTTP</type>
     <description/>
@@ -701,6 +746,60 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </step>
 
   <step>
+    <name>JSON Output</name>
+    <type>JsonOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <outputValue>outputValue</outputValue>
+    <jsonBloc>data</jsonBloc>
+    <nrRowsInBloc>1</nrRowsInBloc>
+    <operation_type>writetofile</operation_type>
+    <compatibility_mode>N</compatibility_mode>
+    <encoding>UTF-8</encoding>
+    <addtoresult>N</addtoresult>
+    <file>
+      <name>C&#x3a;&#x5c;Pentaho - Ce&#x5c;Twitter Data Analysis&#x5c;output&#x5c;scraping</name>
+      <extention>json</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <create_parent_folder>N</create_parent_folder>
+      <DoNotOpenNewFileInit>N</DoNotOpenNewFileInit>
+      <servlet_output>N</servlet_output>
+      </file>
+    <fields>
+      <field>
+        <name>id_twitter</name>
+        <element>id_twitter</element>
+    </field>
+      <field>
+        <name>screen_name</name>
+        <element>screen_name</element>
+    </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
     <name>Merge Join</name>
     <type>MergeJoin</type>
     <description/>
@@ -728,8 +827,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>400</yloc>
+      <xloc>912</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -770,7 +869,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>1088</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -829,8 +928,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>400</yloc>
+      <xloc>608</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -861,8 +960,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>256</yloc>
+      <xloc>976</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -893,8 +992,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>288</yloc>
+      <xloc>1104</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1062,7 +1161,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <name>projeta</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1080,7 +1179,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>944</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1109,8 +1208,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>656</xloc>
-      <yloc>400</yloc>
+      <xloc>784</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1137,7 +1236,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <ignoreMissingPath>Y</ignoreMissingPath>
     <rownum_field/>
     <file>
-      <name>C&#x3a;&#x5c;Pentaho - Ce&#x5c;Twitter Data Analysis&#x5c;output&#x5c;raw_search_tweets.json</name>
+      <name>&#x24;&#x7b;Internal.Entry.Current.Directory&#x7d;&#x2f;..&#x2f;output&#x2f;raw_input_from_oncase.json</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1146,7 +1245,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <fields>
       <field>
         <name>status</name>
-        <path>&#x24;.statuses.&#x2a;</path>
+        <path>&#x24;.&#x2a;</path>
         <type>String</type>
         <format/>
         <currency/>
@@ -1178,7 +1277,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
+      <xloc>16</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>

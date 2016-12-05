@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>data_input_oncase_timline</name>
+    <name>data_input_mentioned_oncase</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -428,18 +428,18 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2016&#x2f;11&#x2f;30 13&#x3a;56&#x3a;33.676</created_date>
+    <created_date>2016&#x2f;11&#x2f;21 10&#x3a;38&#x3a;09.895</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2016&#x2f;11&#x2f;30 13&#x3a;56&#x3a;33.676</modified_date>
+    <modified_date>2016&#x2f;11&#x2f;21 10&#x3a;38&#x3a;09.895</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>Esta transforma&#xe7;&#xe3;o recebe informa&#xe7;&#xf5;es  da API do Twitter da timeline  &#xd;&#xa;&#x40;oncase e armazena em um json &#xd;&#xa;&#xd;&#xa; </note>
-      <xloc>176</xloc>
-      <yloc>176</yloc>
-      <width>396</width>
+      <note>Esta transforma&#xe7;&#xe3;o recebe informa&#xe7;&#xf5;es  da API do Twitter com os tweets que mecinonam &#xd;&#xa;&#x40;oncase e  armazena em um json &#xd;&#xa;&#xd;&#xa; </note>
+      <xloc>96</xloc>
+      <yloc>160</yloc>
+      <width>503</width>
       <heigth>67</heigth>
       <fontname>Palatino Linotype Negrito It&#xe1;lico</fontname>
       <fontsize>9</fontsize>
@@ -631,7 +631,7 @@
       </field>
     </fields>
     <data>
-      <line> <item>dp65Do0ZJPVkQmI39otlQRkdl</item><item/><item/><item>HMAC-SHA1</item><item/><item>110541229-eXKLsdeCmxkwXsFbTOBfoF5Y0s6cBivRpxp4UK4h</item><item>1.0</item><item>YxogEeeMlxix2INJ8p8dnoDjvsJwSQz9zg6khFYPxYuEZJERQq</item><item>GHXaW9NBiSQICBQrQH8azylWnnoR2IU9moN6G02ozMtRs</item><item>https&#x3a;&#x2f;&#x2f;api.twitter.com&#x2f;1.1&#x2f;statuses&#x2f;user_timeline.json</item><item>GET</item><item>&#x40;ONCASE</item><item>10</item> </line>
+      <line> <item>eXVrf3KFeqfcVcVDrsmZPSBAe</item><item/><item/><item>HMAC-SHA1</item><item/><item>800689106057502720-bF0IHkwBry9AwedLmXc7Nq4U9SSOa6M</item><item>1.0</item><item>2S5T9TAPtRXtRVOEOwbMOydfkfcjlGSc19OSEwwD6Rj5xZgEBw</item><item>0W84N8SDakfRruFYfzUghogKegc9FRGDt6DSldjHGTl8M</item><item>https&#x3a;&#x2f;&#x2f;api.twitter.com&#x2f;1.1&#x2f;search&#x2f;tweets.json</item><item>GET</item><item>&#x40;ONCASE</item><item>100</item> </line>
     </data>
     <cluster_schema/>
     <remotesteps>
@@ -641,8 +641,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>96</yloc>
+      <xloc>48</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -683,8 +683,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
-      <yloc>96</yloc>
+      <xloc>224</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -739,8 +739,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
-      <yloc>96</yloc>
+      <xloc>416</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -770,7 +770,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;Internal.Entry.Current.Directory&#x7d;&#x2f;..&#x2f;output&#x2f;raw_timeline_oncase</name>
+      <name>&#x24;&#x7b;Internal.Entry.Current.Directory&#x7d;&#x2f;..&#x2f;output&#x2f;raw_search_tweets</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -809,8 +809,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>96</yloc>
+      <xloc>544</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

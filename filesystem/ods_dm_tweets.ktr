@@ -436,11 +436,11 @@
   </info>
   <notepads>
     <notepad>
-      <note>Esta transforma&#xe7;&#xe3;o le os dados do json , e armazena-os no ODS do dm_tweets, utilizando&#xd;&#xa;o banco PostgreSQL</note>
+      <note>Esta transforma&#xe7;&#xe3;o le os dados do json , e armazena-os no ODS do dm_tweets, utilizando&#xd;&#xa;o banco PostgreSQL ,OBS&#x3a; o MENTIONED EST&#xc1; DESATIVADO,PEGAMOS APENAS O &#xd;&#xa;FROM ONCASE&#xd;&#xa;</note>
       <xloc>64</xloc>
-      <yloc>272</yloc>
+      <yloc>256</yloc>
       <width>502</width>
-      <heigth>38</heigth>
+      <heigth>67</heigth>
       <fontname>Palatino Linotype Negrito It&#xe1;lico</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -458,14 +458,14 @@
     </notepad>
   </notepads>
   <connection>
-    <name>conn_postgres1</name>
+    <name>ODS</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
-    <access>Native</access>
+    <access>JNDI</access>
     <database>ODS</database>
     <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4a417ad71cd97fe88</password>
+    <username/>
+    <password>Encrypted </password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -485,12 +485,12 @@
     <hop>
       <from>tweets</from>
       <to>interprets statuses</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>interprets statuses</from>
       <to>projeta</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>tweets 2</from>
@@ -510,7 +510,7 @@
     <hop>
       <from>projeta</from>
       <to>Dummy &#x28;do nothing&#x29;</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>projeta 2</from>
@@ -559,7 +559,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>conn_postgres1</connection>
+    <connection>ODS</connection>
     <schema>public</schema>
     <table>ODS</table>
     <commit>1000</commit>
@@ -1222,7 +1222,7 @@
     <ignoreMissingPath>Y</ignoreMissingPath>
     <rownum_field/>
     <file>
-      <name>C&#x3a;&#x5c;Pentaho - Ce&#x5c;Twitter Data Analysis&#x5c;output&#x5c;raw_timeline_oncase.json</name>
+      <name>&#x24;&#x7b;Internal.Entry.Current.Directory&#x7d;&#x2f;..&#x2f;output&#x2f;raw_input_from_oncase.json</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
