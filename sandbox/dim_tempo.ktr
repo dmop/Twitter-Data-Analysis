@@ -437,11 +437,11 @@
   <notepads>
   </notepads>
   <connection>
-    <name>conn_postgres</name>
+    <name>dm_tweets</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>onmarket</database>
+    <database>dm_tweets</database>
     <port>5432</port>
     <username>postgres</username>
     <password>Encrypted 2be98afc86aa7f2e4a417ad71cd97fe88</password>
@@ -524,7 +524,7 @@
     <hop>
       <from>Append streams</from>
       <to>Table output</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
   </order>
   <step>
@@ -1987,8 +1987,8 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>conn_postgres</connection>
-    <schema/>
+    <connection>dm_tweets</connection>
+    <schema>public</schema>
     <table>dim_time</table>
     <commit>1000</commit>
     <truncate>Y</truncate>

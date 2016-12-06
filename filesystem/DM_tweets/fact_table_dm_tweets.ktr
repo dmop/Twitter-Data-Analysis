@@ -431,11 +431,35 @@
     <created_date>2016&#x2f;12&#x2f;06 08&#x3a;43&#x3a;52.605</created_date>
     <modified_user>-</modified_user>
     <modified_date>2016&#x2f;12&#x2f;06 08&#x3a;43&#x3a;52.605</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>ODS</name>
+    <server/>
+    <type>POSTGRESQL</type>
+    <access>JNDI</access>
+    <database>ODS</database>
+    <port>1521</port>
+    <username/>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>1521</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>data_input ODS</from>
@@ -445,7 +469,7 @@
     <hop>
       <from>fact_table</from>
       <to>fact_table 2</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
   </order>
   <step>
@@ -459,7 +483,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection/>
+    <connection>ODS</connection>
     <sql>SELECT &#x2a;&#xd;&#xa;FROM public.ods&#xd;&#xa;</sql>
     <limit>0</limit>
     <lookup/>
@@ -474,7 +498,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
+      <xloc>128</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -503,7 +527,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
+      <xloc>272</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -559,7 +583,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
+      <xloc>400</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
