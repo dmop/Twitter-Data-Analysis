@@ -6,7 +6,6 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
     </parameters>
@@ -428,42 +427,21 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2016&#x2f;11&#x2f;28 15&#x3a;12&#x3a;48.357</created_date>
+    <created_date>2016&#x2f;12&#x2f;06 10&#x3a;10&#x3a;40.682</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2016&#x2f;11&#x2f;28 15&#x3a;12&#x3a;48.357</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <modified_date>2016&#x2f;12&#x2f;06 10&#x3a;10&#x3a;40.682</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>Esta transforma&#xe7;&#xe3;o le os dados do json , e armazena-os no ODS do dm_users_liked, utilizando&#xd;&#xa;o banco PostgreSQL</note>
-      <xloc>48</xloc>
-      <yloc>144</yloc>
-      <width>530</width>
-      <heigth>38</heigth>
-      <fontname>Palatino Linotype Negrito It&#xe1;lico</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>ODS</name>
-    <server>localhost</server>
+    <server/>
     <type>POSTGRESQL</type>
     <access>JNDI</access>
     <database>ODS</database>
-    <port>5432</port>
+    <port>1521</port>
     <username/>
     <password>Encrypted </password>
     <servername/>
@@ -473,7 +451,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>1521</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
@@ -483,23 +461,315 @@
   </connection>
   <order>
     <hop>
-      <from>tweets</from>
-      <to>interprets statuses</to>
+      <from>interprets statuses 2</from>
+      <to>HTTP Client 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>interprets statuses</from>
-      <to>projeta</to>
+      <from>Table input</from>
+      <to>interprets statuses 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>projeta</from>
-      <to>Envia para o ODS_tweets</to>
+      <from>HTTP Client 2</from>
+      <to>Extrair rea&#xe7;&#xf5;es 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Extrair rea&#xe7;&#xf5;es 2</from>
+      <to>Modified Java Script Value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified Java Script Value</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Envia para o ODS_tweets</name>
+    <name>interprets statuses 2</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#xd;&#xa;&#xd;&#xa;var url_twitter &#x3d; &#x22;https&#x3a;&#x2f;&#x2f;twitter.com&#x2f;&#x22;&#x3b;&#xd;&#xa;var screen_name &#x3d; screen_name&#x3b;&#xd;&#xa;var url &#x3d; url_twitter &#x2b; screen_name</jsScript_script>
+      </jsScript>      <jsScript>        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>Item_0</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>screen_name</name>
+        <rename>screen_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>url</name>
+        <rename>url</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>HTTP Client 2</name>
+    <type>HTTP</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <url/>
+    <urlInField>Y</urlInField>
+    <urlField>url</urlField>
+    <encoding/>
+    <httpLogin/>
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost/>
+    <proxyPort/>
+    <socketTimeout>10000</socketTimeout>
+    <connectionTimeout>10000</connectionTimeout>
+    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
+    <lookup>
+    </lookup>
+    <result>
+      <name>html</name>
+      <code/>
+      <response_time/>
+      <response_header/>
+    </result>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>320</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Extrair rea&#xe7;&#xf5;es 2</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[
+public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException{
+	if (first){
+	  first = false;
+	}
+
+	Object[] r = getRow();
+
+	if (r == null) {
+	  setOutputDone();
+	  return false;
+	}
+
+    r = createOutputRow(r, data.outputRowMeta.size());
+
+    String html = get(Fields.In, "html").getString(r);
+
+	jodd.jerry.Jerry doc = jodd.jerry.Jerry.jerry(html);
+    String lista = doc.$("div.ProfileNav").html();
+    
+    get(Fields.Out, "html").setValue(r, "<lista>"+lista+"</lista>");
+
+
+    putRow(data.outputRowMeta, r);
+
+	return true;
+}
+]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+        <field>
+        <field_name> lista</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Table input</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>ODS</connection>
+    <sql>SELECT &#x2a;&#xd;&#xa;FROM &#x22;public&#x22;.ods_teste&#xd;&#xa;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>64</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Modified Java Script Value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var regex &#x3d; html.match&#x28;&#x2f;title&#x3d;&#x22;&#x5c;w&#x2a;&#x2f;g&#x29;&#x3b;&#xd;&#xa;&#xd;&#xa;for&#x28;x &#x3d; 0 &#x3b; x&#x3c; regex.length &#x3b; x&#x2b;&#x2b;&#x29;&#x7b;&#xd;&#xa;    regex&#x5b;x&#x5d; &#x3d; regex&#x5b;x&#x5d;.replace&#x28;&#x2f;title&#x3d;&#x22;&#x2f;g, &#x22;&#x22;&#x29;.replace&#x28;&#x27;&#x22;&#x27;, &#x27;&#x27;&#x29;&#x3b;&#xd;&#xa;	var following &#x3d; regex&#x5b;1&#x5d;&#x3b;&#xd;&#xa;	var followers &#x3d; regex&#x5b;2&#x5d;&#x3b;&#xd;&#xa;&#x7d;&#xd;&#xa;&#xd;&#xa;regex &#x3d; regex.join&#x28;&#x22;,&#x22;&#x29;&#x3b;&#xd;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>regex</name>
+        <rename>regex</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>following</name>
+        <rename>following</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>followers</name>
+        <rename>followers</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>      <field>        <name>id_twitter</name>
+        <rename/>
+      </field>      <field>        <name>screen_name</name>
+        <rename/>
+      </field>      <field>        <name>following</name>
+        <rename/>
+      </field>      <field>        <name>followers</name>
+        <rename/>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Table output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -528,24 +798,20 @@
     <return_field/>
     <fields>
         <field>
-          <column_name>id_user</column_name>
-          <stream_name>id_user</stream_name>
+          <column_name>id_twitter</column_name>
+          <stream_name>id_twitter</stream_name>
         </field>
         <field>
-          <column_name>id_tweet</column_name>
-          <stream_name>id_tweet</stream_name>
+          <column_name>screen_name</column_name>
+          <stream_name>screen_name</stream_name>
         </field>
         <field>
-          <column_name>name_user</column_name>
-          <stream_name>name_user</stream_name>
+          <column_name>following</column_name>
+          <stream_name>following</stream_name>
         </field>
         <field>
-          <column_name>followers_count</column_name>
-          <stream_name>followers_count</stream_name>
-        </field>
-        <field>
-          <column_name>following_count</column_name>
-          <stream_name>following_count</stream_name>
+          <column_name>followers</column_name>
+          <stream_name>followers</stream_name>
         </field>
     </fields>
     <cluster_schema/>
@@ -556,173 +822,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>interprets statuses</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var status &#x3d; JSON.parse&#x28;status&#x29;&#x3b;&#xa;&#xa;var id_user    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var id_tweet   &#x3d; status&#x5b;&#x22;id&#x22;&#x5d;&#x3b;&#xd;&#xa;var name_user    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;name&#x22;&#x5d;&#x3b;&#xd;&#xa;var followers_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;followers_count&#x22;&#x5d;&#x3b;&#xd;&#xa;&#xd;&#xa;var following_count    &#x3d; status&#x5b;&#x22;user&#x22;&#x5d;&#x5b;&#x22;friends_count&#x22;&#x5d;&#x3b;&#xd;&#xa;&#xd;&#xa;</jsScript_script>
-      </jsScript>      <jsScript>        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>Item_0</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>id_user</name>
-        <rename>id_user</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>id_tweet</name>
-        <rename>id_tweet</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>name_user</name>
-        <rename>name_user</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>followers_count</name>
-        <rename>followers_count</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>following_count</name>
-        <rename>following_count</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>projeta</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>      <field>        <name>status</name>
-      </field>      <field>        <name>id_user</name>
-      </field>      <field>        <name>id_tweet</name>
-      </field>      <field>        <name>name_user</name>
-      </field>      <field>        <name>followers_count</name>
-      </field>      <field>        <name>following_count</name>
-      </field>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>status</name>
-      </remove>    </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>tweets</name>
-    <type>JsonInput</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <readurl>N</readurl>
-    <removeSourceField>N</removeSourceField>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <ignoreMissingPath>Y</ignoreMissingPath>
-    <rownum_field/>
-    <file>
-      <name>C&#x3a;&#x5c;Pentaho - Ce&#x5c;Twitter Data Analysis&#x5c;output&#x5c;raw_search_tweets.json</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>status</name>
-        <path>&#x24;.statuses.&#x2a;</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <valueField/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>64</yloc>
+      <xloc>832</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
