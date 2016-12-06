@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>DM_tweets</name>
+    <name>date_dimension</name>
     <description/>
     <extended_description/>
     <trans_version/>
