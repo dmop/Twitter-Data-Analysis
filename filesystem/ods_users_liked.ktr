@@ -430,11 +430,59 @@
     <created_date>2016&#x2f;12&#x2f;06 10&#x3a;10&#x3a;40.682</created_date>
     <modified_user>-</modified_user>
     <modified_date>2016&#x2f;12&#x2f;06 10&#x3a;10&#x3a;40.682</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>dm_tweets</name>
+    <server>localhost</server>
+    <type>POSTGRESQL</type>
+    <access>JNDI</access>
+    <database>dm_tweets</database>
+    <port>5432</port>
+    <username/>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>dm_users_liked</name>
+    <server/>
+    <type>POSTGRESQL</type>
+    <access>JNDI</access>
+    <database>dm_users_liked</database>
+    <port>1521</port>
+    <username/>
+    <password>Encrypted </password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>1521</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
   <connection>
     <name>ODS</name>
     <server/>
@@ -482,6 +530,11 @@
     </hop>
     <hop>
       <from>Modified Java Script Value</from>
+      <to>Add sequence 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add sequence 3</from>
       <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
@@ -491,95 +544,6 @@
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>interprets statuses 2</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#xd;&#xa;&#xd;&#xa;var url_twitter &#x3d; &#x22;https&#x3a;&#x2f;&#x2f;twitter.com&#x2f;&#x22;&#x3b;&#xd;&#xa;var screen_name &#x3d; screen_name&#x3b;&#xd;&#xa;var url &#x3d; url_twitter &#x2b; screen_name</jsScript_script>
-      </jsScript>      <jsScript>        <jsScript_type>-1</jsScript_type>
-        <jsScript_name>Item_0</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>screen_name</name>
-        <rename>screen_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>url</name>
-        <rename>url</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>HTTP Client 2</name>
-    <type>HTTP</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <url/>
-    <urlInField>Y</urlInField>
-    <urlField>url</urlField>
-    <encoding/>
-    <httpLogin/>
-    <httpPassword>Encrypted </httpPassword>
-    <proxyHost/>
-    <proxyPort/>
-    <socketTimeout>10000</socketTimeout>
-    <connectionTimeout>10000</connectionTimeout>
-    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
-    <lookup>
-    </lookup>
-    <result>
-      <name>html</name>
-      <code/>
-      <response_time/>
-      <response_header/>
-    </result>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
   <step>
     <name>Extrair rea&#xe7;&#xf5;es 2</name>
     <type>UserDefinedJavaClass</type>
@@ -648,30 +612,42 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>112</yloc>
+      <xloc>240</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Table input</name>
-    <type>TableInput</type>
+    <name>HTTP Client 2</name>
+    <type>HTTP</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>ODS</connection>
-    <sql>SELECT &#x2a;&#xd;&#xa;FROM &#x22;public&#x22;.ods_teste&#xd;&#xa;</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <url/>
+    <urlInField>Y</urlInField>
+    <urlField>url</urlField>
+    <encoding/>
+    <httpLogin/>
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost/>
+    <proxyPort/>
+    <socketTimeout>10000</socketTimeout>
+    <connectionTimeout>10000</connectionTimeout>
+    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
+    <lookup>
+    </lookup>
+    <result>
+      <name>html</name>
+      <code/>
+      <response_time/>
+      <response_header/>
+    </result>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -680,7 +656,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
+      <xloc>240</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -728,8 +704,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>112</yloc>
+      <xloc>384</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -753,8 +729,25 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <rename/>
       </field>      <field>        <name>followers</name>
         <rename/>
+      </field>      <field>        <name>SK_users_liked</name>
+        <rename/>
       </field>        <select_unspecified>N</select_unspecified>
-    </fields>    <cluster_schema/>
+      <meta>        <name>id_twitter</name>
+        <rename>id_tweet</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -762,8 +755,120 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>496</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Table input</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>ODS</connection>
+    <sql>SELECT &#x2a;&#xd;&#xa;FROM &#x22;public&#x22;.ods_users_liked&#xd;&#xa;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>32</xloc>
       <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>interprets statuses 2</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#xd;&#xa;&#xd;&#xa;var url_twitter &#x3d; &#x22;https&#x3a;&#x2f;&#x2f;twitter.com&#x2f;&#x22;&#x3b;&#xd;&#xa;var screen_name &#x3d; screen_name&#x3b;&#xd;&#xa;var url &#x3d; url_twitter &#x2b; screen_name</jsScript_script>
+      </jsScript>      <jsScript>        <jsScript_type>-1</jsScript_type>
+        <jsScript_name>Item_0</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>screen_name</name>
+        <rename>screen_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>url</name>
+        <rename>url</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Add sequence 3</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+      <valuename>SK_users_liked</valuename>
+      <use_database>N</use_database>
+      <connection>dm_tweets</connection>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>1</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -779,9 +884,9 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>ODS</connection>
+    <connection>dm_users_liked</connection>
     <schema>public</schema>
-    <table>ODS_users_liked</table>
+    <table>dm_users_liked</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
@@ -798,8 +903,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <return_field/>
     <fields>
         <field>
-          <column_name>id_twitter</column_name>
-          <stream_name>id_twitter</stream_name>
+          <column_name>id_tweet</column_name>
+          <stream_name>id_tweet</stream_name>
         </field>
         <field>
           <column_name>screen_name</column_name>
@@ -813,6 +918,10 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
           <column_name>followers</column_name>
           <stream_name>followers</stream_name>
         </field>
+        <field>
+          <column_name>SK_users_liked</column_name>
+          <stream_name>SK_users_liked</stream_name>
+        </field>
     </fields>
     <cluster_schema/>
     <remotesteps>
@@ -822,8 +931,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>112</yloc>
+      <xloc>624</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

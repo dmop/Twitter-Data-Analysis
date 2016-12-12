@@ -440,11 +440,11 @@
     <name>dm_tweets</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
-    <access>Native</access>
+    <access>JNDI</access>
     <database>dm_tweets</database>
     <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4a417ad71cd97fe88</password>
+    <username/>
+    <password>Encrypted </password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -1994,7 +1994,7 @@
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
+    <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
@@ -2005,6 +2005,66 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+        <field>
+          <column_name>START_DAY</column_name>
+          <stream_name>START_DAY</stream_name>
+        </field>
+        <field>
+          <column_name>Days_since</column_name>
+          <stream_name>Days_since</stream_name>
+        </field>
+        <field>
+          <column_name>Date</column_name>
+          <stream_name>Date</stream_name>
+        </field>
+        <field>
+          <column_name>Year</column_name>
+          <stream_name>Year</stream_name>
+        </field>
+        <field>
+          <column_name>Month</column_name>
+          <stream_name>Month</stream_name>
+        </field>
+        <field>
+          <column_name>DayOfYear</column_name>
+          <stream_name>DayOfYear</stream_name>
+        </field>
+        <field>
+          <column_name>DayOfMonth</column_name>
+          <stream_name>DayOfMonth</stream_name>
+        </field>
+        <field>
+          <column_name>DayOfWeek</column_name>
+          <stream_name>DayOfWeek</stream_name>
+        </field>
+        <field>
+          <column_name>WeekOfYear</column_name>
+          <stream_name>WeekOfYear</stream_name>
+        </field>
+        <field>
+          <column_name>DayOfWeekDesc</column_name>
+          <stream_name>DayOfWeekDesc</stream_name>
+        </field>
+        <field>
+          <column_name>DayOfWeekShortDesc</column_name>
+          <stream_name>DayOfWeekShortDesc</stream_name>
+        </field>
+        <field>
+          <column_name>MonthDesc</column_name>
+          <stream_name>MonthDesc</stream_name>
+        </field>
+        <field>
+          <column_name>MonthShortDesc</column_name>
+          <stream_name>MonthShortDesc</stream_name>
+        </field>
+        <field>
+          <column_name>data_string</column_name>
+          <stream_name>data_string</stream_name>
+        </field>
+        <field>
+          <column_name>sk_tempo</column_name>
+          <stream_name>sk_tempo</stream_name>
+        </field>
     </fields>
     <cluster_schema/>
     <remotesteps>
