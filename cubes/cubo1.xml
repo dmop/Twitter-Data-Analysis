@@ -1,0 +1,84 @@
+<Schema name="DW Twitter">
+  <Cube name="dm_tweets" visible="true" cache="true" enabled="true">
+    <Table name="dm_tweets" schema="public">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_tweet" highCardinality="false" name="Id_tweet">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="id_tweet" visible="true" column="id_tweet" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="TimeDimension" visible="true" foreignKey="sk_tempo" highCardinality="false" name="time_dimension">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_tempo">
+        <Table name="dim_time" schema="public">
+        </Table>
+        <Level name="year" visible="true" table="dim_time" column="Year" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+        <Level name="mounth" visible="true" column="Month" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+        </Level>
+        <Level name="day" visible="true" column="dayofmonth" type="String" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_user" highCardinality="false" name="user_dimension">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="id_user" visible="true" column="id_user" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="interaction_type" highCardinality="false" name="type_dimension">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="type_interaction" visible="true" column="interaction_type" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="have_hashtag" highCardinality="false" name="hashtag_dimension">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="have_hashtag" visible="true" column="have_hashtag" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="have_media" highCardinality="false" name="media_dimension">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="have_media" visible="true" column="have_media" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="have_link" highCardinality="false" name="link_dimension">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="have_link" visible="true" column="have_link" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="text" highCardinality="false" name="text_dimension">
+      <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true">
+        <Level name="text" visible="true" column="text" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Likes" column="likes_count" datatype="Integer" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Retweets" column="retweet_count" datatype="Integer" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="dm_users_liked" visible="true" cache="true" enabled="true">
+    <Table name="dm_users_liked" schema="public" alias="fact_table">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_tweet" name="id_tweet">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="id_tweet" visible="true" column="id_tweet" type="Integer" uniqueMembers="false" levelType="Regular">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="screen_name" name="screen_name">
+      <Hierarchy visible="true" hasAll="true">
+        <Level name="screen_name" visible="true" column="screen_name" type="String" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="followers" column="followers" datatype="Integer" aggregator="count" visible="true">
+    </Measure>
+    <Measure name="following" column="following" datatype="Integer" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
